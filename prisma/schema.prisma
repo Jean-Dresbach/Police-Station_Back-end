@@ -12,3 +12,46 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Criminal {
+  id         String   @id @default(uuid()) @db.Uuid
+  name       String   @db.VarChar(100)
+  surname    String   @db.VarChar(100)
+  CPF        String   @unique @db.Char(11)
+  createAt   DateTime @default(now()) @map("created_at")
+  updatedeAt DateTime @updatedAt @map("updated_at")
+  Crime      Crime[]
+
+  @@map("criminals")
+}
+
+model Crime {
+  id          String   @id @default(uuid()) @db.Uuid
+  type        String   @db.VarChar(100)
+  description String   @db.VarChar(255)
+  location    String   @db.VarChar(255)
+  date        DateTime
+
+  createAt   DateTime @default(now()) @map("created_at")
+  updatedeAt DateTime @updatedAt @map("updated_at")
+
+  criminalId String   @unique @map("criminal_id") @db.Uuid
+  criminal   Criminal @relation(fields: [criminalId], references: [id])
+  Weapon     Weapon[]
+
+  @@map("crimes")
+}
+
+model Weapon {
+  id          String @id @default(uuid()) @db.Uuid
+  type        String @db.VarChar(100)
+  description String @db.VarChar(255)
+  origin      String @db.VarChar(255)
+  condition   String @db.VarChar(100)
+
+  createAt   DateTime @default(now()) @map("created_at")
+  updatedeAt DateTime @updatedAt @map("updated_at")
+
+  crimeId String @unique @map("crime_id") @db.Uuid
+  crime   Crime  @relation(fields: [crimeId], references: [id])
+}
