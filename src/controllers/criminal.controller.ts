@@ -63,7 +63,29 @@ export class CriminalController {
     } catch (error) {
       return response.status(500).json({
         code: response.statusCode,
-        message: "Erro listar criminoso."
+        message: "Erro ao listar criminoso."
+      })
+    }
+  }
+
+  // upadte - > update single resource
+  public async update(request: Request, response: Response) {
+    try {
+      const { id } = request.params
+      const { name, surname, CPF } = request.body
+
+      const result = await criminalService.update({
+        id,
+        name,
+        surname,
+        CPF
+      })
+
+      return response.status(result.code).json(result)
+    } catch (error) {
+      return response.status(500).json({
+        code: response.statusCode,
+        message: "Erro ao atulizar criminoso."
       })
     }
   }

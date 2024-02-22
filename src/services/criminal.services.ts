@@ -1,5 +1,5 @@
 import { prisma } from "../database/prisma.connection"
-import { CreateCriminalDTO } from "../dtos/criminal.dto"
+import { CreateCriminalDTO, UpdateCriminalDTO } from "../dtos/criminal.dto"
 
 import { ResponseDTO } from "../dtos/response.dto"
 import { Criminal } from "../models/criminal.model"
@@ -84,6 +84,44 @@ export class CriminalService {
       code: 200,
       message: "Criminoso listado com sucesso.",
       data: criminal
+    }
+  }
+
+  public async update(criminalDTO: UpdateCriminalDTO): Promise<ResponseDTO> {
+    const criminal = await prisma.criminal.findUnique({
+      where: {
+        id: criminalDTO.id
+      }
+    })
+
+    if (!criminal) {
+      return {
+        code: 404,
+        message: "Criminoso não encontrado."
+      }
+    }
+
+    const updatedCriminal = await prisma.criminal.update({
+      where: {
+        id: criminalDTO.id
+      },
+      data: {
+        name: criminalDTO.name,
+        surname: criminalDTO.surname,
+        CPF: criminalDTO.CPF
+      },
+      select: {
+        id: true,
+        name: true,
+        surname: true,
+        CPF: true
+      }
+    })
+
+    return {
+      code: 200,
+      message: "Criminoso atualizado com sucesso.",
+      data: updatedCriminal
     }
   }
 }

@@ -11,6 +11,6 @@ router.get("/criminals/:id", criminalController.show)
 
 router.post("/criminals", criminalController.store)
 
-// router.put("/criminals/:id", criminalController.show)
+router.put("/criminals/:id", criminalController.update)
 
 export default router
