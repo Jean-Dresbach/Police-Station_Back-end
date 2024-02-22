@@ -15,7 +15,7 @@ export class CriminalController {
     } catch (error) {
       return response.status(500).json({
         code: response.statusCode,
-        message: "Erro ao listar alunos."
+        message: "Erro ao listar criminosos."
       })
     }
   }
@@ -47,7 +47,23 @@ export class CriminalController {
     } catch (error) {
       return response.status(500).json({
         code: response.statusCode,
-        message: "Erro ao listar alunos."
+        message: "Erro ao criar criminoso."
+      })
+    }
+  }
+
+  // show - > list single resource
+  public async show(request: Request, response: Response) {
+    try {
+      const { id } = request.params
+
+      const result = await criminalService.findById(id)
+
+      return response.status(result.code).json(result)
+    } catch (error) {
+      return response.status(500).json({
+        code: response.statusCode,
+        message: "Erro listar criminoso."
       })
     }
   }
