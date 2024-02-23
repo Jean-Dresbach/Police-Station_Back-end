@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "criminals" ALTER COLUMN "CPF" SET DATA TYPE CHAR(14);
