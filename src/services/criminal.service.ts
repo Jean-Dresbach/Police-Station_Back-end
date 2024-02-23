@@ -17,7 +17,7 @@ export class CriminalService {
     return {
       code: 200,
       message: "Criminosos listados com sucesso.",
-      data: { criminals }
+      data: criminals
     }
   }
 
@@ -40,18 +40,19 @@ export class CriminalService {
         name: criminalDTO.name,
         surname: criminalDTO.surname,
         CPF: criminalDTO.CPF
+      },
+      select: {
+        id: true,
+        name: true,
+        surname: true,
+        CPF: true
       }
     })
 
     return {
       code: 201,
       message: "Criminosos adicionado com sucesso.",
-      data: {
-        id: createdCriminal.id,
-        name: createdCriminal.name,
-        surname: createdCriminal.surname,
-        CPF: createdCriminal.CPF
-      }
+      data: createdCriminal
     }
   }
 
@@ -131,7 +132,7 @@ export class CriminalService {
       }
     }
 
-    const deletedStudent = await prisma.criminal.delete({
+    const deletedCriminal = await prisma.criminal.delete({
       where: { id },
       select: {
         id: true,
@@ -144,7 +145,40 @@ export class CriminalService {
     return {
       code: 200,
       message: "Criminoso removido com sucesso.",
-      data: deletedStudent
+      data: deletedCriminal
+    }
+  }
+
+  public async findCrimeOfACriminal(id: string): Promise<ResponseDTO> {
+    const criminal = await prisma.criminal.findUnique({
+      where: { id }
+    })
+
+    if (!criminal) {
+      return {
+        code: 404,
+        message: "Criminoso não encontrado."
+      }
+    }
+
+    const crimes = await prisma.crime.findMany({
+      where: { criminalId: id },
+      select: {
+        id: true,
+        type: true,
+        description: true,
+        location: true,
+        date: true,
+        criminalId: true
+      }
+    })
+
+    return {
+      code: 200,
+      message: `Crimes de ${
+        criminal.name + " " + criminal.surname
+      } listados com sucesso.`,
+      data: crimes
     }
   }
 }

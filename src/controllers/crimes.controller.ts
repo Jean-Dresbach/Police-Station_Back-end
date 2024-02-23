@@ -1,15 +1,13 @@
 import { Request, Response } from "express"
+import { CrimeService } from "../services/crimes.service"
+import { CreateCrimeDTO } from "../dtos/crime.dto"
 
-import { CriminalService } from "../services/criminal.service"
-import { CreateCriminalDTO } from "../dtos/criminal.dto"
+const crimeService = new CrimeService()
 
-const criminalService = new CriminalService()
-
-export class CriminalController {
-  // index -> list all
+export class CrimesController {
   public async index(_: Request, response: Response) {
     try {
-      const result = await criminalService.findAll()
+      const result = await crimeService.findAll()
 
       return response.status(result.code).json(result)
     } catch (error) {
@@ -20,97 +18,96 @@ export class CriminalController {
     }
   }
 
-  // store - > create a new resource
   public async store(request: Request, response: Response) {
     try {
-      const { name, surname, CPF } = request.body
+      const { type, description, location, date, criminalId } = request.body
 
-      if (!name || !surname || !CPF) {
+      if (!type || !description || !location || !date || !criminalId) {
         return response.status(400).json({
           code: response.statusCode,
           message: "Preencha todos os campos obrigatórios."
         })
       }
 
-      if (isNaN(Number(CPF)) || CPF.length !== 11) {
-        return response.status(400).json({
-          code: response.statusCode,
-          message: "CPF inválido."
-        })
+      const crime: CreateCrimeDTO = {
+        type,
+        description,
+        location,
+        date: new Date(date),
+        criminalId
       }
 
-      const criminal: CreateCriminalDTO = { name, surname, CPF }
-
-      const result = await criminalService.create(criminal)
+      const result = await crimeService.create(crime)
 
       return response.status(result.code).json(result)
     } catch (error) {
+      console.log(error)
+
       return response.status(500).json({
         code: response.statusCode,
-        message: "Erro ao criar criminoso."
+        message: "Erro ao criar um crime."
       })
     }
   }
 
-  // show - > list single resource
   public async show(request: Request, response: Response) {
     try {
       const { id } = request.params
 
-      const result = await criminalService.findById(id)
+      const result = await crimeService.findById(id)
 
       return response.status(result.code).json(result)
     } catch (error) {
       return response.status(500).json({
         code: response.statusCode,
-        message: "Erro ao listar criminoso."
+        message: "Erro ao listar crime."
       })
     }
   }
 
-  // update - > update single resource
   public async update(request: Request, response: Response) {
     try {
       const { id } = request.params
-      const { name, surname, CPF } = request.body
+      const { type, description, location, date, criminalId } = request.body
 
-      const result = await criminalService.update({
+      const result = await crimeService.update({
         id,
-        name,
-        surname,
-        CPF
+        type,
+        description,
+        location,
+        date: new Date(date),
+        criminalId
       })
 
       return response.status(result.code).json(result)
     } catch (error) {
       return response.status(500).json({
         code: response.statusCode,
-        message: "Erro ao atulizar criminoso."
+        message: "Erro ao atulizar crime."
       })
     }
   }
 
-  // delete - > delete single resource
   public async delete(request: Request, response: Response) {
     try {
       const { id } = request.params
 
-      const result = await criminalService.delete(id)
+      const result = await crimeService.delete(id)
 
       return response.status(result.code).json(result)
     } catch (error) {
       return response.status(500).json({
         code: response.statusCode,
-        message: "Erro ao excluir criminoso."
+        message: "Erro ao excluir crime."
       })
     }
   }
 
-  public async findCrimesOfACriminal(request: Request, response: Response) {
+  public async findWeaponOfACrime(request: Request, response: Response) {
     try {
       const { id } = request.params
 
-      const result = await criminalService.findCrimeOfACriminal(id)
+      const result = await crimeService.findWeaponOfACrime(id)
 
       return response.status(result.code).json(result)
     } catch (error) {

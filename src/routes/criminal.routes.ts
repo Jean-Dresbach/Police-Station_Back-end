@@ -8,6 +8,7 @@ const criminalController = new CriminalController()
 
 router.get("/criminals", criminalController.index)
 router.get("/criminals/:id", criminalController.show)
+router.get("/criminals/crimes/:id", criminalController.findCrimesOfACriminal)
 
 router.post("/criminals", criminalController.store)
 
