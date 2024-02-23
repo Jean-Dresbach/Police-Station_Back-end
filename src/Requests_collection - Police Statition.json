@@ -1,0 +1,299 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Requests - Police Statition",
+    "dateExported": "2024-02-23T02:55:36.652Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "c1805143-df14-41b2-801c-e1add22516e5",
+            "name": "criminal",
+            "containerId": "",
+            "created": "2024-02-22T19:17:04.406Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "dcd1f71a-fcd1-4b9d-9c62-18d824be2e3e",
+            "name": "crimes",
+            "containerId": "",
+            "created": "2024-02-23T00:50:08.853Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "62c04c54-9812-493c-9253-af651555f958",
+            "name": "weapons",
+            "containerId": "",
+            "created": "2024-02-23T02:17:17.362Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "5e1de6a4-4a3b-4a60-ad18-84aa37d94aff",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "c1805143-df14-41b2-801c-e1add22516e5",
+            "name": "get all criminals",
+            "url": "http://localhost:3333/criminals",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-22T19:17:14.919Z",
+            "modified": "2024-02-22T19:18:04.547Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ea5263d3-c889-4416-be02-a5e1222ec211",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "c1805143-df14-41b2-801c-e1add22516e5",
+            "name": "create criminal",
+            "url": "http://localhost:3333/criminals",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-22T19:18:21.757Z",
+            "modified": "2024-02-23T01:29:53.082Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Diener\",\n  \"surname\": \"Dornelas\",\n  \"CPF\": \"22222222222\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1d1ba487-49fc-4e42-afbe-84f7e6b459c2",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "c1805143-df14-41b2-801c-e1add22516e5",
+            "name": "get specific criminal",
+            "url": "http://localhost:3333/criminals/e9d5e1ac-1967-4c43-85fa-8a978ed3b0fb",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-22T19:46:17.113Z",
+            "modified": "2024-02-22T19:46:40.453Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "664bcc6a-939e-43e7-a218-2b9f33101a66",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "c1805143-df14-41b2-801c-e1add22516e5",
+            "name": "update criminal",
+            "url": "http://localhost:3333/criminals/cc3d9b88-0d7a-4d31-9eeb-23f88b18c748",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-02-22T19:59:07.341Z",
+            "modified": "2024-02-22T20:01:08.411Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Lazar\",\n  \"surname\": \"Ento\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c4d1d75a-560c-4ca7-9adc-631583e0e3f3",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "c1805143-df14-41b2-801c-e1add22516e5",
+            "name": "delete specific criminal",
+            "url": "http://localhost:3333/criminals/cc3d9b88-0d7a-4d31-9eeb-23f88b18c748",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-02-22T20:10:37.631Z",
+            "modified": "2024-02-22T20:11:05.218Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1f2a4371-4be5-435f-a5e3-cc24660364eb",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "dcd1f71a-fcd1-4b9d-9c62-18d824be2e3e",
+            "name": "get all crimes",
+            "url": "http://localhost:3333/crimes",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-23T00:50:17.581Z",
+            "modified": "2024-02-23T00:51:40.930Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5d8e1ffd-1554-4df6-85d3-e58a06ee466c",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "dcd1f71a-fcd1-4b9d-9c62-18d824be2e3e",
+            "name": "create crime",
+            "url": "http://localhost:3333/crimes",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-02-23T01:11:25.854Z",
+            "modified": "2024-02-23T01:43:39.386Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"type\": \"Latrocínio\",\n  \"description\": \"Morte seguido de roubo.\",\n  \"location\": \"Rio de Janeiro, rua dos assaltos, 21\",\n  \"date\": \"2016-06-12\",\n  \"criminalId\": \"f8cc43b0-7bc1-4adb-bd04-0bd6ea1a96b3\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a05badfd-d3c4-48a0-9b06-7d0a234a5863",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "dcd1f71a-fcd1-4b9d-9c62-18d824be2e3e",
+            "name": "get specific crime",
+            "url": "http://localhost:3333/crimes/26786232-661e-41ee-a3e5-add7ba346234",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-02-23T01:48:39.676Z",
+            "modified": "2024-02-23T01:49:49.602Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4466710d-88e2-44d6-a5eb-304a2048ef41",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "dcd1f71a-fcd1-4b9d-9c62-18d824be2e3e",
+            "name": "update crime",
+            "url": "http://localhost:3333/crimes/26786232-661e-41ee-a3e5-add7ba346234",
+            "method": "PUT",
+            "sortNum": 120000,
+            "created": "2024-02-23T01:50:05.354Z",
+            "modified": "2024-02-23T01:51:50.468Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"date\": \"2018-12-29\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "35c43e83-e675-4f68-828e-08c3e67cc98e",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "dcd1f71a-fcd1-4b9d-9c62-18d824be2e3e",
+            "name": "delete spefic crime",
+            "url": "http://localhost:3333/crimes/26786232-661e-41ee-a3e5-add7ba346234",
+            "method": "DELETE",
+            "sortNum": 130000,
+            "created": "2024-02-23T01:53:28.035Z",
+            "modified": "2024-02-23T01:54:08.138Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5dbd7523-7908-4516-8ee6-2d4ff4c450f2",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "62c04c54-9812-493c-9253-af651555f958",
+            "name": "get all weapons",
+            "url": "http://localhost:3333/weapons",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-02-23T02:17:44.870Z",
+            "modified": "2024-02-23T02:17:58.926Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fca2aaea-ad29-4bb4-a977-936d43e5339a",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "62c04c54-9812-493c-9253-af651555f958",
+            "name": "create weapon",
+            "url": "http://localhost:3333/weapons",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2024-02-23T02:20:05.304Z",
+            "modified": "2024-02-23T02:22:41.007Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"type\": \"Arma branca.\",\n  \"description\": \"Faca de cozinha.\",\n  \"origin\": \"Adquirida legalmente.\",\n  \"condition\": \"Levemente sem fio.\",\n  \"crimeId\": \"3fe4731b-63eb-4c87-9add-f648007e46da\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2f4fe36a-c271-43eb-a7db-31ab1ddd6d60",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "62c04c54-9812-493c-9253-af651555f958",
+            "name": "get specific weapon",
+            "url": "http://localhost:3333/weapons/f58489a1-a40d-455f-9cdf-c20406ed9858",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2024-02-23T02:23:02.265Z",
+            "modified": "2024-02-23T02:23:24.191Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "dd79182b-0b98-46c8-99e5-2d2ec4d0a934",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "62c04c54-9812-493c-9253-af651555f958",
+            "name": "update weapon",
+            "url": "http://localhost:3333/weapons/f58489a1-a40d-455f-9cdf-c20406ed9858",
+            "method": "PUT",
+            "sortNum": 180000,
+            "created": "2024-02-23T02:23:37.007Z",
+            "modified": "2024-02-23T02:25:50.118Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"condition\": \"Completamente sem fio.\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "853b8c0e-bd08-4dac-ac77-c7ba1a355b9d",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "62c04c54-9812-493c-9253-af651555f958",
+            "name": "delete spefic weapon",
+            "url": "http://localhost:3333/weapons/f58489a1-a40d-455f-9cdf-c20406ed9858",
+            "method": "DELETE",
+            "sortNum": 190000,
+            "created": "2024-02-23T02:26:14.024Z",
+            "modified": "2024-02-23T02:26:23.059Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a472f9db-f6d0-4a81-ab37-d8ad109c6592",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "c1805143-df14-41b2-801c-e1add22516e5",
+            "name": "get crimes by criminal",
+            "url": "http://localhost:3333/criminals/crimes/f8cc43b0-7bc1-4adb-bd04-0bd6ea1a96b3",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2024-02-23T02:41:52.160Z",
+            "modified": "2024-02-23T02:42:32.021Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4e1b4576-e17d-4d49-b1ff-f971e6890667",
+            "colId": "854c2b46-2b09-4613-b95e-b6a6f87ec908",
+            "containerId": "dcd1f71a-fcd1-4b9d-9c62-18d824be2e3e",
+            "name": "get weapons by crime",
+            "url": "http://localhost:3333/crimes/weapons/3fe4731b-63eb-4c87-9add-f648007e46da",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2024-02-23T02:54:03.055Z",
+            "modified": "2024-02-23T02:54:30.564Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
