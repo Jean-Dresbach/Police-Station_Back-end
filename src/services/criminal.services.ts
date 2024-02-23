@@ -2,7 +2,6 @@ import { prisma } from "../database/prisma.connection"
 import { CreateCriminalDTO, UpdateCriminalDTO } from "../dtos/criminal.dto"
 
 import { ResponseDTO } from "../dtos/response.dto"
-import { Criminal } from "../models/criminal.model"
 
 export class CriminalService {
   public async findAll(): Promise<ResponseDTO> {
@@ -23,15 +22,9 @@ export class CriminalService {
   }
 
   public async create(criminalDTO: CreateCriminalDTO): Promise<ResponseDTO> {
-    const newCriminal = new Criminal(
-      criminalDTO.name,
-      criminalDTO.surname,
-      criminalDTO.CPF
-    )
-
     const criminal = await prisma.criminal.findUnique({
       where: {
-        CPF: newCriminal.CPF
+        CPF: criminalDTO.CPF
       }
     })
 
@@ -44,9 +37,9 @@ export class CriminalService {
 
     const createdCriminal = await prisma.criminal.create({
       data: {
-        name: newCriminal.name,
-        surname: newCriminal.surname,
-        CPF: newCriminal.CPF
+        name: criminalDTO.name,
+        surname: criminalDTO.surname,
+        CPF: criminalDTO.CPF
       }
     })
 
@@ -122,6 +115,36 @@ export class CriminalService {
       code: 200,
       message: "Criminoso atualizado com sucesso.",
       data: updatedCriminal
+    }
+  }
+
+  // delete - > delete single resource
+  public async delete(id: string): Promise<ResponseDTO> {
+    const criminal = await prisma.criminal.findUnique({
+      where: { id }
+    })
+
+    if (!criminal) {
+      return {
+        code: 404,
+        message: "Criminoso não encontrado."
+      }
+    }
+
+    const deletedStudent = await prisma.criminal.delete({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        surname: true,
+        CPF: true
+      }
+    })
+
+    return {
+      code: 200,
+      message: "Criminoso removido com sucesso.",
+      data: deletedStudent
     }
   }
 }

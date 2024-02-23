@@ -17,7 +17,7 @@ model Criminal {
   id         String   @id @default(uuid()) @db.Uuid
   name       String   @db.VarChar(100)
   surname    String   @db.VarChar(100)
-  CPF        String   @unique @db.Char(14)
+  CPF        String   @unique @db.Char(11)
   createAt   DateTime @default(now()) @map("created_at")
   updatedeAt DateTime @updatedAt @map("updated_at")
   Crime      Crime[]

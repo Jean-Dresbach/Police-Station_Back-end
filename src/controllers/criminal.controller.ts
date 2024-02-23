@@ -7,7 +7,7 @@ const criminalService = new CriminalService()
 
 export class CriminalController {
   // index -> list all
-  public async index(request: Request, response: Response) {
+  public async index(_: Request, response: Response) {
     try {
       const result = await criminalService.findAll()
 
@@ -68,7 +68,7 @@ export class CriminalController {
     }
   }
 
-  // upadte - > update single resource
+  // update - > update single resource
   public async update(request: Request, response: Response) {
     try {
       const { id } = request.params
@@ -86,6 +86,22 @@ export class CriminalController {
       return response.status(500).json({
         code: response.statusCode,
         message: "Erro ao atulizar criminoso."
+      })
+    }
+  }
+
+  // delete - > delete single resource
+  public async delete(request: Request, response: Response) {
+    try {
+      const { id } = request.params
+
+      const result = await criminalService.delete(id)
+
+      return response.status(result.code).json(result)
+    } catch (error) {
+      return response.status(500).json({
+        code: response.statusCode,
+        message: "Erro ao listar criminoso."
       })
     }
   }

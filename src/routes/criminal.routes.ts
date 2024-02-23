@@ -13,4 +13,6 @@ router.post("/criminals", criminalController.store)
 
 router.put("/criminals/:id", criminalController.update)
 
+router.delete("/criminals/:id", criminalController.delete)
+
 export default router
